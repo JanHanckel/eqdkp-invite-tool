@@ -13,14 +13,16 @@ namespace EqdkpWindowsNotifier
             InitializeComponent();
             _eqdkpApiService = new EqdkpApiService.EqdkpApiService();
             LoadSettings();
+            Hide();
         }
 
         private void LoadSettings()
         {
             ConfigSettings.ApiUrl = "http://grauerrat.de";
-            ConfigSettings.UserName = "Gelaxor";
-            ConfigSettings.Password = "odl05gr06";
-            ConfigSettings.PasswordSalt = "";
+            ConfigSettings.ApiKey = "fdc5034fbac8f0b594db2b5dbe7a5f52d14b63906465e89d";
+
+            tb_serverURL.Text = ConfigSettings.ApiUrl;
+            tb_username.Text = ConfigSettings.ApiKey;
         }
 
         private void UpdateData()
@@ -28,6 +30,7 @@ namespace EqdkpWindowsNotifier
             try
             {
                 _eqdkpApiService.Login();
+                _eqdkpApiService.GetEvents();
             }
             catch (Exception ex)
             {
@@ -88,5 +91,11 @@ namespace EqdkpWindowsNotifier
         }
 
         #endregion
+
+        private void button_saveSettings_Click(object sender, EventArgs e)
+        {
+            ConfigSettings.ApiUrl = tb_serverURL.Text;
+            ConfigSettings.ApiKey = tb_username.Text;
+        }
     }
 }

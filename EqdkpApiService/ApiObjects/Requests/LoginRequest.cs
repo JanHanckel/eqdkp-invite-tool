@@ -1,18 +1,16 @@
-﻿using System.Xml.Serialization;
+﻿using RestSharp.Serializers;
 
 namespace EqdkpApiService.ApiObjects
 {
-    /// <remarks/>
-    [XmlType(AnonymousType = true)]
-    [XmlRoot("request", Namespace = "", IsNullable = false)]
+
+    [SerializeAs(Name = "request")]
     public class LoginRequest
-    {
-        [XmlElement(ElementName = "user")]
-        /// <remarks/>
+    {   
+        [SerializeAs(Name = "user")]
         public string User { get; set; }
 
-        [XmlElement(ElementName = "password")]
-        /// <remarks/>
+        
+        [SerializeAs(Name = "password")]        
         public string Password { get; set; }
     }
 }

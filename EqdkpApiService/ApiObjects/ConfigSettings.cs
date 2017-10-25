@@ -10,12 +10,6 @@ namespace EqdkpApiService.ApiObjects
     {
         public static string ApiUrl { get; set; }
 
-        public static string UserName { get; set; }
-
-        public static string Password { get; set; }
-
-        public static string PasswordSalt { get; set; }
-
-        public static string SessionID { get; set; }
+        public static string ApiKey { get; set; }
     }
 }

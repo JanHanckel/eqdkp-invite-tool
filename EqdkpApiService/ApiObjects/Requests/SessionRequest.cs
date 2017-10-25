@@ -1,12 +1,11 @@
-﻿using System.Xml.Serialization;
+﻿using RestSharp.Serializers;
 
 namespace EqdkpApiService.ApiObjects
 {
-    [XmlType(AnonymousType = true)]
-    [XmlRoot("request", Namespace = "", IsNullable = false)]
+    [SerializeAs(Name = "request")]
     class SessionRequest
     {
-        [XmlElement(ElementName = "sid")]        
+        [SerializeAs(Name = "sid")]        
         public string SessionID { get; set; }        
     }
 }

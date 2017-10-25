@@ -6,5 +6,8 @@ namespace EqdkpApiService.ApiObjects
     {
         [XmlElement(ElementName = "sid")]
         public string SessionID { get; set; }
+
+        [XmlElement(ElementName = "end")]
+        public string End { get; set; }
     }
 }
