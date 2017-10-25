@@ -1,4 +1,4 @@
-﻿namespace EqdkpApiService
+﻿namespace EqdkpWindowsNotifier
 {
     partial class MainView
     {

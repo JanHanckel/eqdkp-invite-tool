@@ -1,32 +1,43 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using EqdkpApiService.ApiObjects;
+using System;
 using System.Windows.Forms;
 
-namespace EqdkpApiService
+namespace EqdkpWindowsNotifier
 {
     public partial class MainView : Form
     {
+        private EqdkpApiService.EqdkpApiService _eqdkpApiService;
+
         public MainView()
         {
             InitializeComponent();
-
+            _eqdkpApiService = new EqdkpApiService.EqdkpApiService();
             LoadSettings();
         }
 
         private void LoadSettings()
         {
-
+            ConfigSettings.ApiUrl = "http://grauerrat.de";
+            ConfigSettings.UserName = "Gelaxor";
+            ConfigSettings.Password = "odl05gr06";
+            ConfigSettings.PasswordSalt = "";
         }
 
         private void UpdateData()
         {
-            throw new NotImplementedException();
+            try
+            {
+                _eqdkpApiService.Login();
+            }
+            catch (Exception ex)
+            {
+                NotifyError(ex.Message);
+            }
+        }
+
+        private void NotifyError(string message)
+        {
+            EqdkpInviteTool.ShowBalloonTip(1000, "Error", message, ToolTipIcon.Error);
         }
 
         #region window events
