@@ -19,7 +19,7 @@ namespace EqdkpWindowsNotifier
         private void LoadSettings()
         {
             ConfigSettings.ApiUrl = "http://grauerrat.de";
-            ConfigSettings.ApiKey = "fdc5034fbac8f0b594db2b5dbe7a5f52d14b63906465e89d";
+            ConfigSettings.ApiKey = "0d3f49c31b4a99d136cfb0a8b4f37abcccb9118cfbe7054225944d3c88f9134e";
 
             tb_serverURL.Text = ConfigSettings.ApiUrl;
             tb_username.Text = ConfigSettings.ApiKey;

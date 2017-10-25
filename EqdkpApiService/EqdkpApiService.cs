@@ -18,17 +18,7 @@ namespace EqdkpApiService
 
         public void GetEvents()
         {
-            GetUserChars();            
-        }
-
-        public void GetUserChars()
-        {            
-            var apiUrl = "/api.php?function=user_chars";
-
-            var request = new RestRequest(apiUrl, Method.GET);
-            request.RequestFormat = DataFormat.Xml;
-
-            var test = HandleApiRequest<EventsResponse>(request).Events;
+            var events = GetEventsIntern();
         }
 
         private Event[] GetEventsIntern(bool raidsOnly = true, int number = 5)
@@ -46,8 +36,6 @@ namespace EqdkpApiService
         
         private T HandleApiRequest<T>(RestRequest request) where T : ApiResponse, new()
         {
-            request.AddQueryParameter("token", ConfigSettings.ApiKey);
-            request.AddQueryParameter("atype", "api");
             var response = SendApiRequest<T>(request);
 
             if (response.Status == 0)
@@ -58,6 +46,7 @@ namespace EqdkpApiService
 
         private T SendApiRequest<T>(RestRequest request) where T : ApiResponse, new()
         { 
+            request.AddHeader("X-Custom-Authorization", $"token={ConfigSettings.ApiKey}&type=user");
             var client = new RestClient(ConfigSettings.ApiUrl);
             var response = client.Execute<T>(request);
             return response.Data;
