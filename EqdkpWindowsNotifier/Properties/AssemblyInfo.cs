@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("EqdkpApiService_")]
+[assembly: AssemblyTitle("EqdkpWindowsNotifier")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("EqdkpApiService_")]
+[assembly: AssemblyProduct("EqdkpWindowsNotifier")]
 [assembly: AssemblyCopyright("Copyright ©  2017")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // The following GUID is for the ID of the typelib if this project is exposed to COM
-[assembly: Guid("2bff9432-cd00-4c66-bdbe-8605999c27d9")]
+[assembly: Guid("10abe3e3-5df9-425a-a15c-36d7ff42a530")]
 
 // Version information for an assembly consists of the following four values:
 //

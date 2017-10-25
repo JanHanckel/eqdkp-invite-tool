@@ -16,8 +16,20 @@ namespace EqdkpApiService
         {
             InitializeComponent();
 
-            // Load Settings
+            LoadSettings();
         }
+
+        private void LoadSettings()
+        {
+
+        }
+
+        private void UpdateData()
+        {
+            throw new NotImplementedException();
+        }
+
+        #region window events
 
         private void settingsToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -26,8 +38,9 @@ namespace EqdkpApiService
 
         private void updateNowToolStripMenuItem_Click(object sender, EventArgs e)
         {
-
+            UpdateData();
         }
+
 
         private void exitToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -62,5 +75,7 @@ namespace EqdkpApiService
             Show();
             Focus();
         }
+
+        #endregion
     }
 }
