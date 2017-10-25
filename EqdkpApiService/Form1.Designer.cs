@@ -50,19 +50,19 @@
             // toolStripMenuItem1
             // 
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(140, 22);
             this.toolStripMenuItem1.Text = "Settings";
             // 
             // updateNowToolStripMenuItem
             // 
             this.updateNowToolStripMenuItem.Name = "updateNowToolStripMenuItem";
-            this.updateNowToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.updateNowToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.updateNowToolStripMenuItem.Text = "Update Now";
             // 
             // exitToolStripMenuItem
             // 
             this.exitToolStripMenuItem.Name = "exitToolStripMenuItem";
-            this.exitToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.exitToolStripMenuItem.Size = new System.Drawing.Size(140, 22);
             this.exitToolStripMenuItem.Text = "Exit";
             // 
             // notifyIcon1
@@ -79,6 +79,7 @@
             this.ClientSize = new System.Drawing.Size(284, 261);
             this.MaximizeBox = false;
             this.Name = "Form1";
+            this.ShowIcon = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "EQDKP Invite Tool Settings";
             this.contextMenuStrip1.ResumeLayout(false);
