@@ -14,6 +14,7 @@ namespace EqdkpWindowsNotifier
             _eqdkpApiService = new EqdkpApiService.EqdkpApiService();
             LoadSettings();
             Hide();
+            UpdateData();
         }
 
         private void LoadSettings()

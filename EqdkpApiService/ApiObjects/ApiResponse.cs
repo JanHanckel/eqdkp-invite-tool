@@ -6,10 +6,10 @@ namespace EqdkpApiService.ApiObjects
     [XmlRootAttribute("response", Namespace = "", IsNullable = false)]
     public class ApiResponse
     {
-        [XmlElement(ElementName = "status")]
+        [XmlElement("status")]
         public byte Status { get; set; }
 
-        [XmlElement(ElementName = "error")]
+        [XmlElement("error")]
         public string Error { get; set; }
     }
 }

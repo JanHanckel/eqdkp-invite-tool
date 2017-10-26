@@ -46,12 +46,21 @@
   <ItemGroup>
     <Compile Include="ApiObjects\ApiResponse.cs" />
     <Compile Include="ApiObjects\ConfigSettings.cs" />
-    <Compile Include="ApiObjects\Responses\EventList.cs" />
+    <Compile Include="ApiObjects\Responses\Character.cs" />
+    <Compile Include="ApiObjects\Responses\EventDetailRaidStatus.cs" />
+    <Compile Include="ApiObjects\Responses\EventDetailResponse.cs" />
+    <Compile Include="ApiObjects\Responses\EventsResponse.cs" />
     <Compile Include="ApiObjects\Requests\LoginRequest.cs" />
     <Compile Include="ApiObjects\Requests\SessionRequest.cs" />
     <Compile Include="ApiObjects\Responses\LoginResponse.cs" />
+    <Compile Include="ApiObjects\Responses\RaidsResponse.cs" />
+    <Compile Include="ApiObjects\Responses\RaidStates.cs" />
+    <Compile Include="ApiObjects\Responses\RaidStatus.cs" />
+    <Compile Include="ApiObjects\Responses\Role.cs" />
     <Compile Include="ApiObjects\Responses\SaltResponse.cs" />
     <Compile Include="ApiObjects\Responses\SessionResponse.cs" />
+    <Compile Include="ApiObjects\Responses\UserChars.cs" />
+    <Compile Include="ApiObjects\Responses\UserStatus.cs" />
     <Compile Include="EqdkpApiService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
