@@ -37,11 +37,12 @@
             this.EqdkpInviteTool = new System.Windows.Forms.NotifyIcon(this.components);
             this.label_serverurl = new System.Windows.Forms.Label();
             this.tb_serverURL = new System.Windows.Forms.TextBox();
-            this.tb_username = new System.Windows.Forms.TextBox();
+            this.tb_apikey = new System.Windows.Forms.TextBox();
             this.label_username = new System.Windows.Forms.Label();
-            this.tb_password = new System.Windows.Forms.TextBox();
+            this.tb_wowpath = new System.Windows.Forms.TextBox();
             this.label_password = new System.Windows.Forms.Label();
             this.button_saveSettings = new System.Windows.Forms.Button();
+            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -88,9 +89,9 @@
             this.label_serverurl.AutoSize = true;
             this.label_serverurl.Location = new System.Drawing.Point(13, 13);
             this.label_serverurl.Name = "label_serverurl";
-            this.label_serverurl.Size = new System.Drawing.Size(63, 13);
+            this.label_serverurl.Size = new System.Drawing.Size(66, 13);
             this.label_serverurl.TabIndex = 1;
-            this.label_serverurl.Text = "Server URL";
+            this.label_serverurl.Text = "Server URL:";
             // 
             // tb_serverURL
             // 
@@ -98,39 +99,43 @@
             this.tb_serverURL.Name = "tb_serverURL";
             this.tb_serverURL.Size = new System.Drawing.Size(190, 20);
             this.tb_serverURL.TabIndex = 2;
+            this.tb_serverURL.Leave += new System.EventHandler(this.tb_serverURL_Leave);
             // 
-            // tb_username
+            // tb_apikey
             // 
-            this.tb_username.Location = new System.Drawing.Point(82, 36);
-            this.tb_username.Name = "tb_username";
-            this.tb_username.Size = new System.Drawing.Size(190, 20);
-            this.tb_username.TabIndex = 4;
+            this.tb_apikey.Location = new System.Drawing.Point(82, 36);
+            this.tb_apikey.Name = "tb_apikey";
+            this.tb_apikey.Size = new System.Drawing.Size(190, 20);
+            this.tb_apikey.TabIndex = 4;
+            this.tb_apikey.Leave += new System.EventHandler(this.tb_apikey_Leave);
             // 
             // label_username
             // 
             this.label_username.AutoSize = true;
             this.label_username.Location = new System.Drawing.Point(13, 39);
             this.label_username.Name = "label_username";
-            this.label_username.Size = new System.Drawing.Size(55, 13);
+            this.label_username.Size = new System.Drawing.Size(49, 13);
             this.label_username.TabIndex = 3;
-            this.label_username.Text = "Username";
+            this.label_username.Text = "Api Key :";
             // 
-            // tb_password
+            // tb_wowpath
             // 
-            this.tb_password.Location = new System.Drawing.Point(82, 62);
-            this.tb_password.Name = "tb_password";
-            this.tb_password.Size = new System.Drawing.Size(190, 20);
-            this.tb_password.TabIndex = 6;
-            this.tb_password.UseSystemPasswordChar = true;
+            this.tb_wowpath.HideSelection = false;
+            this.tb_wowpath.Location = new System.Drawing.Point(82, 62);
+            this.tb_wowpath.Name = "tb_wowpath";
+            this.tb_wowpath.Size = new System.Drawing.Size(190, 20);
+            this.tb_wowpath.TabIndex = 6;
+            this.tb_wowpath.Enter += new System.EventHandler(this.tb_password_Enter);
+            this.tb_wowpath.Leave += new System.EventHandler(this.tb_wowpath_Leave);
             // 
             // label_password
             // 
             this.label_password.AutoSize = true;
             this.label_password.Location = new System.Drawing.Point(13, 65);
             this.label_password.Name = "label_password";
-            this.label_password.Size = new System.Drawing.Size(53, 13);
+            this.label_password.Size = new System.Drawing.Size(60, 13);
             this.label_password.TabIndex = 5;
-            this.label_password.Text = "Password";
+            this.label_password.Text = "WoW-Path";
             // 
             // button_saveSettings
             // 
@@ -148,9 +153,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(284, 120);
             this.Controls.Add(this.button_saveSettings);
-            this.Controls.Add(this.tb_password);
+            this.Controls.Add(this.tb_wowpath);
             this.Controls.Add(this.label_password);
-            this.Controls.Add(this.tb_username);
+            this.Controls.Add(this.tb_apikey);
             this.Controls.Add(this.label_username);
             this.Controls.Add(this.tb_serverURL);
             this.Controls.Add(this.label_serverurl);
@@ -175,11 +180,12 @@
         private System.Windows.Forms.NotifyIcon EqdkpInviteTool;
         private System.Windows.Forms.Label label_serverurl;
         private System.Windows.Forms.TextBox tb_serverURL;
-        private System.Windows.Forms.TextBox tb_username;
+        private System.Windows.Forms.TextBox tb_apikey;
         private System.Windows.Forms.Label label_username;
-        private System.Windows.Forms.TextBox tb_password;
+        private System.Windows.Forms.TextBox tb_wowpath;
         private System.Windows.Forms.Label label_password;
         private System.Windows.Forms.Button button_saveSettings;
+        private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
     }
 }
 

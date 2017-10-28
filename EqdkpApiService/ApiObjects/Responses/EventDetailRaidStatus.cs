@@ -1,4 +1,5 @@
-﻿using System.Xml.Serialization;
+﻿using System.Collections.Generic;
+using System.Xml.Serialization;
 
 namespace EqdkpApiService.ApiObjects
 {
@@ -23,6 +24,14 @@ namespace EqdkpApiService.ApiObjects
 
         [XmlElement("category4")]
         public Category Category_Melee;
+
+        public IEnumerable<Category> AllCategories => new List<Category>
+        {
+            Category_Heal,
+            Category_Tank,
+            Category_Ranged,
+            Category_Melee
+        };
     }
 
     [XmlType(AnonymousType = true)]

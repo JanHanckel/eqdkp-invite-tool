@@ -75,6 +75,6 @@ namespace EqdkpApiService.ApiObjects
         }
 
         [XmlIgnore]
-        public EventDetailResponse Details;
+        public EventDetailResponse Details { get; set; }
     }
 }

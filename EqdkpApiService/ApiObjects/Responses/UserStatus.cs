@@ -6,27 +6,27 @@ namespace EqdkpApiService.ApiObjects
     public class UserStatus
     {
         [XmlElement("status")]
-        public int Status;
+        public int Status { get; set; }
 
         [XmlElement("status_name")]
-        public string StatusName;
+        public string StatusName { get; set; }
 
         [XmlElement("char_id")]
-        public int CharacterID;
+        public int CharacterID { get; set; }
 
         [XmlElement("char_class")]
-        public int CharacterClassID;
+        public int CharacterClassID { get; set; }
 
         [XmlElement("char_name")]
-        public string ChracterName;
+        public string ChracterName { get; set; }
 
         [XmlElement("raidgroup")]
-        public int RaidGroup;
+        public int RaidGroup { get; set; }
 
         [XmlElement("char_roleid")]
-        public int CharacterRoleID;
+        public int CharacterRoleID { get; set; }
 
         [XmlElement("char_role")]
-        public string CharacterRole;
+        public string CharacterRole { get; set; }
     }
 }

@@ -34,7 +34,7 @@ namespace EqdkpApiService.ApiObjects
         public bool SignedByAdmin;
 
         [XmlElement("note")]
-        public string note;
+        public string Note;
 
         [XmlElement("rank")]
         public string Rank;

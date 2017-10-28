@@ -3,10 +3,12 @@ using RestSharp;
 using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
+using Tools;
 
 namespace EqdkpApiService
 {
@@ -23,23 +25,44 @@ namespace EqdkpApiService
         public IEnumerable<Raid> GetRaids()
         {
             var raids = GetRaids(5);
-            foreach(var raid in raids)
-            {
-                raid.Details = GetEventDetails(raid.EventID);
-            }
-
-            return raids;
-        }
-
-        public IEnumerable<Event> GetEvents()
-        {
-            var raids = GetEvents(true, 5);
             foreach (var raid in raids)
             {
                 raid.Details = GetEventDetails(raid.EventID);
             }
 
             return raids;
+        }        
+
+        public IEnumerable<Event> GetEvents(IEnumerable<Player> players)
+        {
+            if(players == null || !players.Any())
+                players = GetPlayers();
+
+            var raids = GetEvents(true, 5);
+            foreach (var raid in raids)
+            {
+                raid.Details = GetEventDetails(raid.EventID);
+
+                foreach(var state in raid.Details.RaidStatus.AllStates)
+                foreach(var cat in state.Categories.AllCategories)
+                foreach(var character in cat.Characters)
+                {
+                    var player = players.FirstOrDefault(p => p.Name.StartsWith(character.Name));
+                    character.Name = player.Name;
+                }
+            }
+
+            return raids;
+        }
+
+        public IEnumerable<Player> GetPlayers()
+        {
+            var apiUrl = "/api.php?function=points";
+
+            var request = new RestRequest(apiUrl, Method.GET);
+            request.RequestFormat = DataFormat.Xml;
+
+            return HandleApiRequest<PointsResponse>(request).Players;
         }
 
         private Raid[] GetRaids(int number)
@@ -95,16 +118,9 @@ namespace EqdkpApiService
             var client = new RestClient(ConfigSettings.ApiUrl);
             var response = client.Execute(request);
 
-            var serializer = new XmlSerializer(typeof(T));
             T result = null;
-
             var xml = response.Content.Replace("\n", "");
-            using (TextReader reader = new StringReader(xml))
-            {
-
-                result = (T)serializer.Deserialize(reader);
-            }
-            return (T)result;
+            return Serializer.Deserialize<T>(xml);
         }
 
         private string CreateSHAHash(string Password, string Salt)

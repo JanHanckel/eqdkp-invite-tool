@@ -6,3 +6,5 @@ D:\Repositories\EqdkpInviteTool\EqdkpApiService\obj\Debug\EqdkpApiService.csproj
 D:\Repositories\EqdkpInviteTool\EqdkpApiService\obj\Debug\EqdkpApiService.csproj.CoreCompileInputs.cache
 D:\Repositories\EqdkpInviteTool\EqdkpApiService\obj\Debug\EqdkpApiService.dll
 D:\Repositories\EqdkpInviteTool\EqdkpApiService\obj\Debug\EqdkpApiService.pdb
+D:\Repositories\EqdkpInviteTool\EqdkpApiService\bin\Debug\Tools.dll
+D:\Repositories\EqdkpInviteTool\EqdkpApiService\bin\Debug\Tools.pdb

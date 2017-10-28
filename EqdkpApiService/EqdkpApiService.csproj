@@ -53,6 +53,7 @@
     <Compile Include="ApiObjects\Requests\LoginRequest.cs" />
     <Compile Include="ApiObjects\Requests\SessionRequest.cs" />
     <Compile Include="ApiObjects\Responses\LoginResponse.cs" />
+    <Compile Include="ApiObjects\Responses\PointsResponse.cs" />
     <Compile Include="ApiObjects\Responses\RaidsResponse.cs" />
     <Compile Include="ApiObjects\Responses\RaidStates.cs" />
     <Compile Include="ApiObjects\Responses\RaidStatus.cs" />
@@ -66,6 +67,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Tools\Tools.csproj">
+      <Project>{7ec3f832-cd4a-4ced-8f69-fb20b1538f79}</Project>
+      <Name>Tools</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

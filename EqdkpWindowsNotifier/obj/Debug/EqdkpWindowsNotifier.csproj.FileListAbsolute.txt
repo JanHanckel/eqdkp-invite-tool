@@ -12,3 +12,5 @@ D:\Repositories\EqdkpInviteTool\EqdkpWindowsNotifier\obj\Debug\EqdkpWindowsNotif
 D:\Repositories\EqdkpInviteTool\EqdkpWindowsNotifier\obj\Debug\EqdkpWindowsNotifier.csproj.CoreCompileInputs.cache
 D:\Repositories\EqdkpInviteTool\EqdkpWindowsNotifier\obj\Debug\EqdkpWindowsNotifier.exe
 D:\Repositories\EqdkpInviteTool\EqdkpWindowsNotifier\obj\Debug\EqdkpWindowsNotifier.pdb
+D:\Repositories\EqdkpInviteTool\EqdkpWindowsNotifier\bin\Debug\Tools.dll
+D:\Repositories\EqdkpInviteTool\EqdkpWindowsNotifier\bin\Debug\Tools.pdb

@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Xml.Serialization;
 
 namespace EqdkpApiService.ApiObjects
@@ -64,11 +66,11 @@ namespace EqdkpApiService.ApiObjects
         public string calendar_name { get; set; }
 
         [XmlElement("user_status")]
-        public UserStatus UserStatus;
-        
+        public UserStatus UserStatus { get; set; }
+
         [XmlArray("user_chars")]
         [XmlArrayItem("char")]
-        public Character[] Characters;
+        public Character[] Characters { get; set; }
 
         public DateTime StartDate
         {
@@ -89,6 +91,13 @@ namespace EqdkpApiService.ApiObjects
         public EventDetailRaidStatus status_canceled { get; set; }
 
         [XmlElement("status3")]
-        public EventDetailRaidStatus status_substitude { get; set; }        
+        public EventDetailRaidStatus status_substitude { get; set; }
+
+        public IEnumerable<EventDetailRaidStatus> AllStates => new List<EventDetailRaidStatus> {
+            status_confirmed,
+            status_registered,
+            status_canceled,
+            status_substitude
+        };
     }
 }
