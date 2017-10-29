@@ -41,6 +41,16 @@ namespace EqdkpWindowsNotifier.Objects.GameObjects
         public List<Role> Roles { get; set; }
     }
 
+    public class Roles
+    {
+        public Roles()
+        {
+            Role = new List<Role>();
+        }
+
+        public List<Role> Role { get; set; }
+    }
+
     public class Role
     {
         public Role()
@@ -55,9 +65,24 @@ namespace EqdkpWindowsNotifier.Objects.GameObjects
         public List<Character> Players { get; set; }
     }
 
+    public class Characters
+    {
+        public Characters()
+        {
+            Character = new List<Character>();
+        }
+
+        public List<Character> Character { get; set; }
+    }
+
     public class Character
     {
-        public int CharcterID { get; set; }
+        public Character()
+        {
+            Roles = new List<Role>();
+        }
+
+        public int CharacterID { get; set; }
 
         public string Name { get; set; }
 
@@ -66,5 +91,7 @@ namespace EqdkpWindowsNotifier.Objects.GameObjects
         public string ClassName { get; set; }
 
         public string Note { get; set; }
+
+        public List<Role> Roles { get; set; }
     }
 }

@@ -4,6 +4,7 @@ using EqdkpWindowsNotifier.Service;
 using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Windows.Forms;
 using Tools;
@@ -12,12 +13,14 @@ namespace EqdkpWindowsNotifier
 {
     public partial class MainView : Form
     {
-        private DataService _DataService;        
+        private DataService _DataService;
+        private WowAddonService _WowAddonService;
 
         public MainView()
         {
             InitializeComponent();
             _DataService = new DataService();
+            _WowAddonService = new WowAddonService();
 
             LoadSettings();
             Hide();
@@ -45,6 +48,8 @@ namespace EqdkpWindowsNotifier
                 var raids = DataConverter.Convert(events);
 
                 var test = LuaDataSerializer.Convert(raids);
+
+                FileHandler.SaveAddonData(_DataService.GetSettings().WowPath, "raidData.lua", test);
             }
             catch (Exception ex)
             {

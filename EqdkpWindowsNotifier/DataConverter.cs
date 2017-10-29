@@ -99,9 +99,9 @@ namespace EqdkpWindowsNotifier
         {
             return new Objects.GameObjects.Character
             {
-                CharcterID = character.ID,
+                CharacterID = character.ID,
                 Name = character.Name,
-                ClassID = character.ClassID,
+                ClassID = character.Class == 0 ? character.ClassID : character.Class,
                 Note = character.Note
             };
         }

@@ -5,27 +5,41 @@ namespace Tools
 {
     public static class FileHandler
     {
-        public static void SaveAddonData (string path, string data)
+        private const string _WowAddonPath = @"\Interface\Addons\EqdkpInviteTool\Data\";
+
+        public static void SaveAddonData (string wowPath, string fileName, string data)
         {
+            string path = CheckPath(wowPath, fileName);
+
             byte[] bytes;
             using (var fs = new FileStream(path, FileMode.OpenOrCreate))
             {
-                using (var ms = new MemoryStream())                
+                using (var ms = new MemoryStream())
                 using (var sw = new StreamWriter(ms))
                 {
                     sw.Write(data);
                     sw.Flush();
                     fs.Position = 0;
                     bytes = ms.ToArray();
-                }               
+                }
 
                 fs.Write(bytes, 0, bytes.Length);
             }
         }
 
-        public static string LoadAddonData(string path)
+        private static string CheckPath(string wowPath, string fileName)
         {
-            using (var fs = new FileStream(path, FileMode.OpenOrCreate))
+            var path = Path.Combine($"{wowPath}{_WowAddonPath}", fileName);
+            if (!Directory.Exists(Path.GetDirectoryName(path)))
+                throw new System.Exception("WoW Addon is missing or WoW-Path ist not right.");
+            return path;
+        }
+
+        public static string LoadAddonData(string wowPath, string fileName)
+        {
+            string path = CheckPath(wowPath, fileName);
+
+            using (var fs = new FileStream(path, FileMode.Open))
             {
                 var size = (int)fs.Length;
                 var data = new byte[size];
