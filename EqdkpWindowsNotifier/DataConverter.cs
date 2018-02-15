@@ -31,10 +31,11 @@ namespace EqdkpWindowsNotifier
 
         private static Objects.GameObjects.Raid ConvertEvent(Event even)
         {
+            var dateTime = DateTime.SpecifyKind(even.StartDate, DateTimeKind.Local);
             var raid = new Objects.GameObjects.Raid
             {
                 EventID = even.EventID,
-                Date = even.StartDate
+                Date = dateTime
             };
 
             ConvertDetails(even, raid);

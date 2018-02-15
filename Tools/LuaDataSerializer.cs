@@ -49,15 +49,16 @@ namespace Tools
                         _IndentLevel++;
                     }
 
+                    int i = 1;
                     foreach (var item in (IEnumerable<object>)prop.GetValue(obj, null))
-                    {
-                        
-                            _StringBuilder.AppendLine($"{GetIndent()}[\"{item.GetType().Name}\"] = {{");
+                    {                        
+                            _StringBuilder.AppendLine($"{GetIndent()}[{i}] = {{");
                             _IndentLevel++;
                         
                         ConvertObject(item);
                         _IndentLevel--;
                         _StringBuilder.AppendLine($"{GetIndent()}}},");                        
+                        i++;
                     }
 
                     if (type != prop.Name)
@@ -96,6 +97,6 @@ namespace Tools
                 return $"\"{property}\"";
 
             return property?.ToString() ?? "\"\"";
-        }
+        }        
     }
 }

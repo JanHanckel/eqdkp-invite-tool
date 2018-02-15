@@ -6,6 +6,8 @@ using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
+using System.Reflection;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Tools;
 
@@ -15,6 +17,9 @@ namespace EqdkpWindowsNotifier
     {
         private DataService _DataService;
         private WowAddonService _WowAddonService;
+        private string _AppName = "EQDKPWindowsNotifier";
+        private RegistryKey _RegistryKey = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
+        private Regex UrlRegex = new Regex(@"http:\/\/.*|https:\/\/.*", RegexOptions.Compiled);
 
         public MainView()
         {
@@ -22,9 +27,16 @@ namespace EqdkpWindowsNotifier
             _DataService = new DataService();
             _WowAddonService = new WowAddonService();
 
+            chkStartUp.Checked = GetStartUpValue();
+
             LoadSettings();
             Hide();
             //UpdateData();
+        }
+
+        private bool GetStartUpValue()
+        {
+            return _RegistryKey.GetValue(_AppName) != null;
         }
 
         private void LoadSettings()
@@ -50,11 +62,18 @@ namespace EqdkpWindowsNotifier
                 var test = LuaDataSerializer.Convert(raids);
 
                 FileHandler.SaveAddonData(_DataService.GetSettings().WowPath, "raidData.lua", test);
+
+                NotifyInfo("Data updated.");
             }
             catch (Exception ex)
             {
-                NotifyError(ex.Message);
+                NotifyError($"{ex.Message}");
             }
+        }
+
+        private void NotifyInfo(string message)
+        {
+            EqdkpInviteTool.ShowBalloonTip(1000, "Info", message, ToolTipIcon.Info);
         }
 
         private void NotifyError(string message)
@@ -116,15 +135,14 @@ namespace EqdkpWindowsNotifier
                 tb_wowpath.Text = folderBrowserDialog1.SelectedPath;
             }
         }
+        
 
         private void SetStartup()
-        {
-            //RegistryKey rk = Registry.CurrentUser.OpenSubKey("SOFTWARE\\Microsoft\\Windows\\CurrentVersion\\Run", true);
-
-            //if (chkStartUp.Checked)
-            //    rk.SetValue(AppName, Application.ExecutablePath.ToString());
-            //else
-            //    rk.DeleteValue(AppName, false);
+        {   
+            if (chkStartUp.Checked)
+                _RegistryKey.SetValue(_AppName, Application.ExecutablePath);
+            else
+                _RegistryKey.DeleteValue(_AppName, false);
         }
 
         #endregion
@@ -156,9 +174,10 @@ namespace EqdkpWindowsNotifier
 
         private void SaveSettings()
         {
+            SetStartup();
             var settings = new SettingsData
             {
-                ApiUrl = $"http://{tb_serverURL.Text}",
+                ApiUrl = UrlRegex.IsMatch(tb_serverURL.Text) ? tb_serverURL.Text : $"http://{tb_serverURL.Text}",
                 ApiKey = tb_apikey.Text,
                 WowPath = tb_wowpath.Text
             };

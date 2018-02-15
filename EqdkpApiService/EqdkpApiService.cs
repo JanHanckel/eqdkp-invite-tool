@@ -117,8 +117,7 @@ namespace EqdkpApiService
             request.AddHeader("X-Custom-Authorization", $"token={ConfigSettings.ApiKey}&type=user");
             var client = new RestClient(ConfigSettings.ApiUrl);
             var response = client.Execute(request);
-
-            T result = null;
+            
             var xml = response.Content.Replace("\n", "");
             return Serializer.Deserialize<T>(xml);
         }

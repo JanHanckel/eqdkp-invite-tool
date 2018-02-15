@@ -43,6 +43,7 @@
             this.label_password = new System.Windows.Forms.Label();
             this.button_saveSettings = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
+            this.chkStartUp = new System.Windows.Forms.CheckBox();
             this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -139,7 +140,7 @@
             // 
             // button_saveSettings
             // 
-            this.button_saveSettings.Location = new System.Drawing.Point(16, 88);
+            this.button_saveSettings.Location = new System.Drawing.Point(16, 112);
             this.button_saveSettings.Name = "button_saveSettings";
             this.button_saveSettings.Size = new System.Drawing.Size(256, 23);
             this.button_saveSettings.TabIndex = 7;
@@ -147,11 +148,23 @@
             this.button_saveSettings.UseVisualStyleBackColor = true;
             this.button_saveSettings.Click += new System.EventHandler(this.button_saveSettings_Click);
             // 
+            // chkStartUp
+            // 
+            this.chkStartUp.AutoSize = true;
+            this.chkStartUp.Location = new System.Drawing.Point(13, 89);
+            this.chkStartUp.Name = "chkStartUp";
+            this.chkStartUp.Size = new System.Drawing.Size(117, 17);
+            this.chkStartUp.TabIndex = 8;
+            this.chkStartUp.Text = "Start with Windows";
+            this.chkStartUp.TextAlign = System.Drawing.ContentAlignment.BottomLeft;
+            this.chkStartUp.UseVisualStyleBackColor = true;
+            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 120);
+            this.ClientSize = new System.Drawing.Size(284, 143);
+            this.Controls.Add(this.chkStartUp);
             this.Controls.Add(this.button_saveSettings);
             this.Controls.Add(this.tb_wowpath);
             this.Controls.Add(this.label_password);
@@ -186,6 +199,7 @@
         private System.Windows.Forms.Label label_password;
         private System.Windows.Forms.Button button_saveSettings;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
+        private System.Windows.Forms.CheckBox chkStartUp;
     }
 }
 

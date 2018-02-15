@@ -11,20 +11,22 @@ namespace Tools
         {
             string path = CheckPath(wowPath, fileName);
 
-            byte[] bytes;
-            using (var fs = new FileStream(path, FileMode.OpenOrCreate))
-            {
-                using (var ms = new MemoryStream())
-                using (var sw = new StreamWriter(ms))
-                {
-                    sw.Write(data);
-                    sw.Flush();
-                    fs.Position = 0;
-                    bytes = ms.ToArray();
-                }
+            File.WriteAllText(path, data);
 
-                fs.Write(bytes, 0, bytes.Length);
-            }
+            //byte[] bytes;
+            //using (var fs = new FileStream(path, FileMode.OpenOrCreate))
+            //{
+            //    using (var ms = new MemoryStream())
+            //    using (var sw = new StreamWriter(ms))
+            //    {
+            //        sw.Write(data);
+            //        sw.Flush();
+            //        fs.Position = 0;
+            //        bytes = ms.ToArray();
+            //    }
+
+            //    fs.Write(bytes, 0, bytes.Length);
+            //}
         }
 
         private static string CheckPath(string wowPath, string fileName)
