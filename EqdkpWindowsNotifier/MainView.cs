@@ -3,10 +3,6 @@ using EqdkpWindowsNotifier.Objects;
 using EqdkpWindowsNotifier.Service;
 using Microsoft.Win32;
 using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Linq;
-using System.Reflection;
 using System.Text.RegularExpressions;
 using System.Windows.Forms;
 using Tools;
@@ -29,9 +25,18 @@ namespace EqdkpWindowsNotifier
 
             chkStartUp.Checked = GetStartUpValue();
 
+            var timer = new System.Timers.Timer();
+            timer.Elapsed += Timer_Elapsed;
+            timer.Interval = TimeSpan.FromMinutes(15).TotalMilliseconds;
+            timer.Enabled = true;            
+
             LoadSettings();
-            Hide();
-            //UpdateData();
+            Hide();            
+        }
+
+        private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
+        {
+            UpdateData();
         }
 
         private bool GetStartUpValue()
@@ -44,8 +49,8 @@ namespace EqdkpWindowsNotifier
             var settings = _DataService.GetSettings();
             if (settings != null)
             {
-                tb_serverURL.Text = ConfigSettings.ApiUrl = settings.ApiUrl;// "http://grauerrat.de"; //"http://192.168.0.22:1337";
-                tb_apikey.Text = ConfigSettings.ApiKey = settings.ApiKey; //"0d3f49c31b4a99d136cfb0a8b4f37abcccb9118cfbe7054225944d3c88f9134e";
+                tb_serverURL.Text = ConfigSettings.ApiUrl = settings.ApiUrl;
+                tb_apikey.Text = ConfigSettings.ApiKey = settings.ApiKey;
                 tb_wowpath.Text = settings.WowPath;
             }
         }
