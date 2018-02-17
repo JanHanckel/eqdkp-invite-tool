@@ -1,5 +1,0 @@
-D:\Repositories\EqdkpInviteTool\Tools\bin\Release\Tools.dll
-D:\Repositories\EqdkpInviteTool\Tools\bin\Release\Tools.pdb
-D:\Repositories\EqdkpInviteTool\Tools\obj\Release\Tools.csproj.CoreCompileInputs.cache
-D:\Repositories\EqdkpInviteTool\Tools\obj\Release\Tools.dll
-D:\Repositories\EqdkpInviteTool\Tools\obj\Release\Tools.pdb

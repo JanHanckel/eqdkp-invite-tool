@@ -28,7 +28,7 @@ namespace EqdkpWindowsNotifier
             var timer = new System.Timers.Timer();
             timer.Elapsed += Timer_Elapsed;
             timer.Interval = TimeSpan.FromMinutes(15).TotalMilliseconds;
-            timer.Enabled = true;            
+            timer.Enabled = true;
 
             LoadSettings();
             Hide();            
@@ -36,7 +36,7 @@ namespace EqdkpWindowsNotifier
 
         private void Timer_Elapsed(object sender, System.Timers.ElapsedEventArgs e)
         {
-            UpdateData();
+            UpdateData(false);
         }
 
         private bool GetStartUpValue()
@@ -55,7 +55,7 @@ namespace EqdkpWindowsNotifier
             }
         }
 
-        private void UpdateData()
+        private void UpdateData(bool notifyOnUpdate = true)
         {
             try
             {
@@ -68,7 +68,7 @@ namespace EqdkpWindowsNotifier
 
                 FileHandler.SaveAddonData(_DataService.GetSettings().WowPath, "raidData.lua", test);
 
-                NotifyInfo("Data updated.");
+                if(notifyOnUpdate) NotifyInfo("Data updated.");
             }
             catch (Exception ex)
             {

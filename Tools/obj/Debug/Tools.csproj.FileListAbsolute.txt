@@ -1,6 +1,0 @@
-D:\Repositories\EqdkpInviteTool\Tools\bin\Debug\Tools.dll
-D:\Repositories\EqdkpInviteTool\Tools\bin\Debug\Tools.pdb
-D:\Repositories\EqdkpInviteTool\Tools\obj\Debug\Tools.csprojResolveAssemblyReference.cache
-D:\Repositories\EqdkpInviteTool\Tools\obj\Debug\Tools.csproj.CoreCompileInputs.cache
-D:\Repositories\EqdkpInviteTool\Tools\obj\Debug\Tools.dll
-D:\Repositories\EqdkpInviteTool\Tools\obj\Debug\Tools.pdb
