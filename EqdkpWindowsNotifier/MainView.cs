@@ -188,6 +188,8 @@ namespace EqdkpWindowsNotifier
             };
 
             _DataService.SaveSettings(settings);
+            _DataService.UpdateSettings();
+            LoadSettings();
         }
     }
 }

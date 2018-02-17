@@ -56,14 +56,19 @@ namespace EqdkpWindowsNotifier.Service
         {
             if (_Settings == null)
             {
-                var rawData = FileHandler.LoadLocalData(_SETTINGSFILENAME);
-                if (TryParseXml(rawData))
-                {
-                    var settingsData = Serializer.Deserialize<SettingsData>(rawData);
-                    _Settings = settingsData;
-                }
+                UpdateSettings();
             }
             return _Settings;
+        }
+
+        public void UpdateSettings()
+        {
+            var rawData = FileHandler.LoadLocalData(_SETTINGSFILENAME);
+            if (TryParseXml(rawData))
+            {
+                var settingsData = Serializer.Deserialize<SettingsData>(rawData);
+                _Settings = settingsData;
+            }
         }
 
         public void SaveSettings(SettingsData settings)
